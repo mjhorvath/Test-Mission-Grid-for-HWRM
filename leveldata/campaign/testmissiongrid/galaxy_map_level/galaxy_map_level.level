@@ -1,0 +1,12 @@
+function DetermChunk()
+	setWorldBoundsInner({0,0,0}, {outer_distance,outer_distance,outer_distance})
+end
+
+function NonDetermChunk()
+	fogSetActive(0)
+	setGlareIntensity(0)
+	setLevelShadowColour(0, 0, 0, 1)
+	loadBackground("m01")
+	setSensorsManagerCameraDistances(12000, 60000)
+	setDefaultMusic("Data:sound/music/STAGING/STAGING_04")
+end

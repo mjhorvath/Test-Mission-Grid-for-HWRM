@@ -1,0 +1,16 @@
+With a ship sitting at the origin and pointing in the positive Z direction toward the 180 mark on the level disc:
+* The X axis points to the left. The Y axis points upward. The Z axis points forward.
+* Rotating the ship around the X axis by 90 degrees results in the ship facing downward.
+* Rotating the ship around the Y axis by 90 degrees results in the ship facing to the left along the positive X axis.
+* Rotating the ship around the Z axis by 90 degrees results in the ship laying on its right side still facing the positive Z direction.
+* When rotating around the Y angle and the Z angle, the ship is rotated around the Y angle before the Z angle.
+* When rotating around the X angle and the Y angle, the ship is rotated around the X angle before the Y angle.
+* When rotating around the X angle and the Z angle, the ship is rotated around the X angle before the Z angle.
+
+Using vrotate and a ship initially positioned at 10000 meters along the Z axis:
+* Rotating the ship in space around the X axis results in the ship ending up along the negative Y axis.
+* Rotating the ship in space around the Y axis results in the ship ending up along the positive X axis.
+* Rotating the ship in space around the Z axis results in the ship remaining along the positive Z axis.
+* When rotating around the Y angle and the Z angle, the ship is rotated around the Z angle before the Y angle.
+* When rotating around the X angle and the Y angle, the ship is rotated around the X angle before the Y angle.
+* When rotating around the X angle and the Z angle, the ship is rotated around the Z angle before the X angle.

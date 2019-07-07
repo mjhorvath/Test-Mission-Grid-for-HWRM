@@ -1,0 +1,17 @@
+-- Sector B1: Build a Fighter Module
+function DetermChunk()
+	print("Level: Starting DetermChunk...")
+	setWorldBoundsInner({0,0,0}, {outer_distance,outer_distance,outer_distance})
+	print("Level: Ending DetermChunk!")
+end
+
+function NonDetermChunk()
+	print("Level: Starting NonDetermChunk...")
+	fogSetActive(0)
+	setGlareIntensity(0)
+	setLevelShadowColour(0, 0, 0, 1)
+	loadBackground("m02")
+	setSensorsManagerCameraDistances(12000, 60000)
+	setDefaultMusic("Data:sound/music/STAGING/STAGING_04")
+	print("Level: Ending NonDetermChunk!")
+end

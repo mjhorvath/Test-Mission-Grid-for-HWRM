@@ -1,0 +1,17 @@
+print("Level: Parsing level...")
+dofilepath("data:scripts\\TMG_campaigndata.lua")
+dofilepath("data:scripts\\TMG_initialstate.lua")
+dofilepath("player:TestMissionGrid\\TMG_savegame.lua")
+
+maxPlayers = 3
+player = {}
+player[0] = {id = 0, name = "", resources = 0, startPos = 0, raceName = "Hiigaran",}	-- player
+player[1] = {id = 1, name = "", resources = 0, startPos = 0, raceName = "Vaygr",}	-- enemies
+player[2] = {id = 2, name = "", resources = 0, startPos = 0, raceName = "Hiigaran",}	-- allies
+
+if (loadSectorMap == 1) then
+	dofilepath("data:leveldata\\campaign\\testmissiongrid\\galaxy_map_level\\galaxy_map_level.level")
+else
+	dofilepath("data:leveldata\\campaign\\testmissiongrid\\sector_" .. sectorCode .. "\\sector_" .. sectorCode .. "_src.level")
+end
+print("Level: Done parsing level!")

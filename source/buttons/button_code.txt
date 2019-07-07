@@ -1,0 +1,26 @@
+FEButtonStyle1_Outlined_Chipped_Mikali = 
+{
+	type 	= "Button",
+	buttonStyle = "FEButtonStyle1_Outlined_Chipped", --base this style on FEButtonStyle1_Outlined_Chipped
+	stateIconOfs = { 0.0, 64/512 }, --64 is the offset between each button in the tga/dds file, 512 is the tga/dds height
+	--stateIconCells = {disabled, OFF, mouseover when OFF, click when OFF, ON, mouseover when ON, click when ON, flash(?)}
+	--the values in stateIconCells correspond to the offset chosen to point to the correct graphic in the tga/dds file used in IconBase below
+	--example : mouseover when OFF = 2, so it will use the third color from the top (0 being the first one)
+	stateIconCells = { 0, 1, 2, 3, 3, 3, 3, 4 },
+	
+	IconBase = {
+		size = {0, 0},
+		texture = "DATA:UI\\NewUI\\Styles\\ui_4kbuttons_Outlined_Chipped_Mikali.tga",
+		uvRect = { 4/64, 4/512, 64/64, 64/512 },
+		patch_X = { 7, -1, 7, 0 },
+		patch_Y = { 7, -1, 7, 0 },
+		patch_ResScale = RES_SCALE,
+		Surface = { --this is managed by the shaders and I don't understand how it works, as changing values doesn't seem to change anything
+			surface = "ui_multistate";
+			{ prop = "state0", float3 = { 0.0, 0.0, 1.0 } },
+			{ prop = "state1", float3 = { 0.0, 0.0, 0.0 } },
+			{ prop = "state2", float3 = { 0.0, 0.0, 0.0 } },
+			{ prop = "decal", float3 = { 0.0, 0.0, 0.0 } },
+		},
+	},
+},

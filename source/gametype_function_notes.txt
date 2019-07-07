@@ -1,0 +1,27 @@
+x--	SobGroup_CreateShip(sobg_flag, ship_type)							-- needs at least one existng builder to work, does not use hyperspace effect for large ships but instead spits them out the hangar as if built by the player
+x--	SobGroup_SpawnNewShipInSobGroup(playerIndex, ship_type, "nonames", sobg_flag, loca_strt)	-- no hyperspace effect, no parade formation, all ships bunched up in the middle, ignores rotation parameters of point/sphere
+x--	Player_FillShipsByType(sobg_flag, playerIndex, "hgn_mothership")	-- fills all of a player's ships of that type, not just the ones in a sobgroup
+x--	SobGroup_Despawn(sobg_strt)						-- instant
+x--	SobGroup_Spawn  (sobg_strt, loca_strt)					-- ships need to already be in hyperspace, instant
+x--	SobGroup_EnterHyperSpaceOffMap(sobg_strt)				-- is not instant, uses hyperspace animation, ignores small ships
+--	SobGroup_ExitHyperSpace(sobg_strt, loca_strt)				-- ships need to already be in hyperspace, even the small ships use the hyperspace effect if they are not docked, makes the ships visible for a split second before showing the hyperspace animation (WTF?!), ignores rotation parameters of point/sphere and instead orients ships based on the direction of travel, ships exit in formation but are not "linked" to the mothership and don't move with it, small ships become damaged and need healing even if they are docked
+--	SobGroup_HyperspaceTo(sobg_strt, loca_strt)				-- seems to work similarly to SobGroup_ExitHyperSpace
+--	SobGroup_HyperspaceToVector(sobg_strt, {0,0,0})				-- seems to work similarly to SobGroup_ExitHyperSpace
+--	SobGroup_ParadeSobGroup(sobg_strt, sobg_flag, 1)			-- the mothership does not use the hyperspace effect but the other ships do, has instant modes, instant modes cause damage to small ships, can't parade a group around itself
+--	Player_InstantDockAndParade(playerIndex, sobg_flag, 0)			-- puts small ships inside the mothership hangar and does not launch them automatically, applies to all player ships everywhere including ships that are supposed to be placed around the map
+--	SobGroup_DockSobGroupInstant(sobg_strt, sobg_flag)			-- puts big ships in the shiphold, works on ships in hyperspace, the first ship in the sobgroup acquires all the other ships
+--	Player_GetShipsByFilterExclude(0, sobg_dock_yes, "Ability", "HyperSpaceCommand")			-- ships must be in alive space, works on all of a player's ships instead of just a single sobgroup
+--	Player_GetShipsByFilterInclude(0, sobg_dock_not, "Ability", "HyperSpaceCommand")			-- ships must be in alive space, works on all of a player's ships instead of just a single sobgroup
+--	setMissionComplete(1)							-- ends the mission, takes you back to the main menu, I think this saves the player's fleet to a persist.lua file in preparation for the next mission
+--	setMissionComplete(0)							-- ends the mission, brings up a small menu where you can restart the level, load a saved game, or go back to the main menu
+--	FE_RestartGame(0)							-- restarts the current mission
+--	SobGroup_SplitGroupFromGroup(ship_name_sub, player_sobg, SobGroup_Count(player_sobg), "Special_Splitter")	-- works okay with ships in hyperspace, fails when ships occupy the same coordinates, does not take into account squadron sizes, ignores docked ships
+--	"Player_Ships0"								-- this sobgroup ignores ships in hyperpsace and ships that are docked
+--	SobGroup_Launch(sobg_dock_yes, sobg_flag)				-- only the first ship in the sobgroup does the launching
+--	SobGroup_SetAutoLaunch(sobg_flag, ShipHoldLaunch)			-- seems to have a permanent effect
+--	SobGroup_IsDockedSobGroup(<sSobGroupNameDocking>, <sSobGroupNameDockedWith>)	-- returns true if *any* of sob1 are docked with *any* of sob2
+--	SobGroup_Move(<iPlayerIndex>, <sSobGroupName>, <sVolumeName>)		-- is this instantaneous?
+--	SobGroup_GetCoordSys(<sSobGroupName>)					-- gets the transformation matrix of the named sobgroup
+--	SobGroup_SetTransform(<sSobGroupName>, <tMatrix>)			-- sets the transformation matrix of the named sobgroup, doesn't seem to work properly sometimes, I had to move a ship 1000 units away from the spawn volume for it to work
+--	SobGroup_SetPosition(<sSobGroupName>, <tCoordinates>)			-- moves a sobgroup to a new location, doesn't seem to work properly sometimes, I had to move a ship 1000 units away from the spawn volume for it to work
+--	UI_FlashButton(<sScreenName>, <sButtonName>, <iNumberOfTimes>)		-- may only work only with certain types of buttons, haven't tested it thoroughly, works with TextButton style "FEButtonStyle1_Outlined"

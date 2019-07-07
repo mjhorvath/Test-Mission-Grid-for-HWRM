@@ -1,0 +1,20 @@
+-- Sector D2: Move a Ship
+function DetermChunk()
+	print("Level: Starting DetermChunk...")
+	setWorldBoundsInner({0,0,0}, {outer_distance,outer_distance,outer_distance})
+	if (questsStatus.d2_ShipHasMoved ~= 1) then
+		addSphere("GoToVolume", {0, 0, -5000}, 1000)
+	end
+	print("Level: Ending DetermChunk!")
+end
+
+function NonDetermChunk()
+	print("Level: Starting NonDetermChunk...")
+        fogSetActive(0)
+	setGlareIntensity(0)
+	setLevelShadowColour(0, 0, 0, 1)
+	loadBackground("m08")
+	setSensorsManagerCameraDistances(12000, 60000)
+	setDefaultMusic("Data:sound/music/STAGING/STAGING_04")
+	print("Level: Ending NonDetermChunk!")
+end

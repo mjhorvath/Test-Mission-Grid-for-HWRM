@@ -1,0 +1,60 @@
+-- =============================================================================
+-- Name : Postmortem.campaign -- Purpose : campaign for postmortem tutorial.
+--
+-- Copyright Relic Entertainment, Inc. All rights reserved.
+-- =============================================================================
+
+-- localized display name for the UI. DAT strings can be found in "UI.DAT".
+displayName = "Test Mission Grid"
+
+contentType		= 0		-- 0 = Primary
+contentName		= "testmissiongrid"
+contentOrdered		= 1
+contentChooseText	= "contentChooseText"
+contentThumbName	= "contentThumbName"
+contentThumbDesc	= "contentThumbDesc"
+contentSort		= 1.0		-- Default is 1.0, so 0.5 will appear _before_ others.
+
+ExtFilter	= "campaign_testmissiongrid"
+contentRules	= "SinglePlayer"	-- A DEFAULT that actually reads from SinglePlayerOptions.lua
+
+RealMission =
+{
+	-- This next function tells the game to play Animatic "A00.lua" before the mission starts.
+--	postload =	function ()	playAnimatic("data:animatics\\A00.lua", 1, 1)	end,
+	-- This tells the scrtip what Directory to load the mission from.
+	directory = "sector_hub_level",
+	-- This tells the script what ".lua" file to load.
+	level = "sector_hub_level.level",
+	-- This tells the game what happens when the mission ends.
+--	postlevel =	function (bWin)	postLevelComplete()	end,
+	postlevel =	function (bWin)	end,
+	-- Used in the Campaign Description Menu.
+	displayName = "dummy displayName",
+	-- Used in the Campaign Description Menu.
+	description = "dummy description",
+--	usepersist = "player:Campaign\\testmissiongrid\\persist5.lua",	-- change this?
+--	usedefaultpersist = 1,						-- change this?
+}
+
+TestMission =
+{
+	-- This next function tells the game to play Animatic "A00.lua" before the mission starts.
+--	postload =	function ()	playAnimatic("data:animatics\\A00.lua", 1, 1)	end,
+	-- This tells the scrtip what Directory to load the mission from.
+	directory = "extra_test_level",
+	-- This tells the script what ".lua" file to load.
+	level = "extra_test_level.level",
+	-- This tells the game what happens when the mission ends.
+	postlevel =	function (bWin)	postLevelComplete()	end,
+	-- Used in the Campaign Description Menu.
+	displayName = "dummy displayName",
+	-- Used in the Campaign Description Menu.
+	description = "dummy description",
+--	usepersist = "player:Campaign\\testmissiongrid\\persist5.lua",	-- change this?
+--	usedefaultpersist = 1,						-- change this?
+}
+
+-- create a mission structure, make sure this has only ONE mission in it, the dummy mission
+Mission = {}
+Mission[1] = RealMission

@@ -1,0 +1,114 @@
+dofilepath("data:scripts\\utilfunc.lua")
+
+maxPlayers = 3
+player = {}
+player[0] = {id = 0, name = "", resources = 0, startPos = 0, raceName = "Hiigaran",}	-- player
+player[1] = {id = 1, name = "", resources = 0, startPos = 0, raceName = "Vaygr",}	-- enemies
+player[2] = {id = 2, name = "", resources = 0, startPos = 0, raceName = "Hiigaran",}	-- allies
+
+outer_distance = 50000
+inner_distance = 40000
+enter_distance = 30000
+grid_distance = inner_distance
+ping_distance = (outer_distance + inner_distance)/2
+
+
+exitDirections =
+{
+	"East",
+	"South",
+	"West",
+	"North",
+	"Center",
+}
+
+exitLocations =
+{
+	{ 1, 0, 0,},	-- East
+	{ 0, 0, 1,},	-- South
+	{-1, 0, 0,},	-- West
+	{ 0, 0,-1,},	-- North
+	{ 0, 0, 0,},	-- Center
+}
+
+exitRotations =
+{
+	{0,1*-90-90,0},	-- East
+	{0,2*-90-90,0},	-- South
+	{0,3*-90-90,0},	-- West
+	{0,4*-90-90,0},	-- North
+	{0,0,0},	-- Center
+}
+
+function DetermChunk()
+	print("Level: Starting DetermChunk...")
+	addSquadron("meg_coo_1", "meg_coordinateaxes", {0,0,0}, -1, {0,0,0}, 1, 0)
+
+	test_motherships()
+--	test_rotation_angles()
+
+	print("Level: Ending DetermChunk!")
+end
+
+function test_motherships()
+	addSquadron("mommyship_1", "hgn_mothership_dummy", {    0,0,0}, 0, {0,0,0}, 1, 0)
+	addSquadron("mommyship_2", "hgn_mothership_dummy", { 1000,0,0}, 0, {0,0,0}, 1, 0)
+	createSOBGroup("mommysobg_1")
+	createSOBGroup("mommysobg_2")
+	addToSOBGroup("mommyship_1", "mommysobg_1")
+	addToSOBGroup("mommyship_2", "mommysobg_2")
+end
+
+function test_rotation_angles()
+	local test_euler_1 = {}
+	for i = 1, 9 do
+		test_euler_1[i] = {random() * 360, random() * 360, random() * 360}
+--		test_euler_1[i] = {1,0,1}
+		print("euler_1_" .. i .. " = " .. vstr(test_euler_1[i]))
+		addSquadron("mommyship_" .. i, "hgn_mothership_dummy", {0,0,0}, 0, test_euler_1[i], 1, 0)
+		createSOBGroup("mommysobg_" .. i)
+		addToSOBGroup("mommyship_" .. i, "mommysobg_" .. i)
+	end
+	for i = 1, 9 do
+		local test_matrx_1 = EulerToMatrix(test_euler_1[i])
+		print("matrx_1_" .. i .. " = " .. vstr(test_matrx_1))
+	end
+end
+
+function test_position_angles()
+	local new_position = vrotate({0,0,10000}, {45,0,90})
+	addSquadron("inty", "hgn_interceptor", new_position, 0, {0,0,0}, 1, 0)
+	print("printing = " .. vstr(vanglesXY(vrotate({0,0,10000}, {315,330,270}))))
+	print("printing = " .. mod(-420, 360))
+end
+
+function place_int_carrier()
+	createSOBGroup("interceptorsobg")
+	createSOBGroup("carriersobg")
+	for i = 1, 2 do
+		addSquadron("interceptor" .. i, "hgn_interceptor", {0,0,i * 500}, 0, {0,0,0}, 5, 0)
+		addToSOBGroup("interceptor" .. i, "interceptorsobg")
+		addSquadron("carrier" .. i, "hgn_carrier", {i * 500,0,0}, 0, {0,0,0}, 1, 0)
+		addToSOBGroup("carrier" .. i, "carriersobg")
+	end
+end
+
+function place_exit_grids()
+	for i = 1, 4 do
+		local grid_loc = vmultiply(exitLocations[i], grid_distance)
+		local grid_rot = exitRotations[i]
+		local grid_nam = exitDirections[i]
+		addSquadron("exitgrid_" .. grid_nam, "meg_exitgridcircle", grid_loc, -1, grid_rot, 1, 0)
+	end
+end
+
+function NonDetermChunk()
+	print("Level: Starting NonDetermChunk...")
+	fogSetActive(0)
+	setGlareIntensity(0)
+	setLevelShadowColour(0, 0, 0, 1)
+	loadBackground("m01")
+	setSensorsManagerCameraDistances(12000, 60000)
+	setDefaultMusic("Data:sound/music/STAGING/STAGING_04")
+	print("Level: Ending NonDetermChunk!")
+end
