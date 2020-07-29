@@ -1,5 +1,5 @@
 Title: Test Mission Grid
-Version: 0.15.2
+Version: 0.15.3
 Authors: Mikali
 Created: 2010/12/22
 Updated: 2020/07/29
@@ -13,6 +13,11 @@ Steam:
 
 
 ======== ======== ======== ======== ======== ======== ======== ======== ========
+
+UPDATE
+Source code is now on GitHub if you want to poke around:
+
+https://github.com/mjhorvath/Test-Mission-Grid-for-HWRM
 
 
 DESCRIPTION
