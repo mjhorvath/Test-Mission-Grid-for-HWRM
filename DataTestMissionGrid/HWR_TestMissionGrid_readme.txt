@@ -2,7 +2,7 @@ Title: Test Mission Grid
 Version: 0.15.2
 Authors: Mikali
 Created: 2010/12/22
-Updated: 2018/03/12
+Updated: 2020/07/29
 Homepage:
 	http://isometricland.net/homeworld/homeworld.php
 Discussion:
@@ -28,12 +28,14 @@ http://forums.relicnews.com/showthread.php?t=21997 (dead link)
 
 
 INSTALLATION
-If you have the Steam version of the game, you need to subscribe to the mod on 
-Steam Workshop, and select Mods from the game launcher. For the GOG.com version 
-of the game, extract the ZIP archive and copy the "DataTestMissionGrid" folder 
-to your "HomeworldRM" directory. Then create a new desktop shortcut, and add 
-the "-moddatapath DataTestMissionGrid", "-overrideBigFile", and "-luatrace" 
-flags to the shortcut's "Target" field. Use this shortcut from now on.
+If you have the Steam version of the game and want to play the mod, you need to 
+subscribe to it on Steam Workshop, and select Mods from the game launcher. For 
+the GOG.com version of the game and/or the GitHub version of the mod, extract 
+the ZIP archive and copy the "DataTestMissionGrid" folder to your "Homeworld 
+Remastered" or "HomeworldRM" directories. Then create a new desktop shortcut, 
+and add the "-moddatapath DataTestMissionGrid", "-overrideBigFile", and 
+"-luatrace" flags to the shortcut's "Target" field. Use this shortcut from now 
+on.
 
 When upgrading to newer versions of this mod, make sure to first start a new 
 campaign by deleting the contents of the "HomeworldRM\Bin\Profiles\
@@ -148,6 +150,10 @@ CREDITS
 
 
 CHANGE LOG
+
+0.15.3 - 2020/07/29
+• Moved the game files to a sub-directory of the GitHub repo. Nothing else was 
+  changed.
 
 0.15.2 - 2018/03/12
 • Fixed a bug with squadron lists that occurred after building the 
