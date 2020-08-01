@@ -144,7 +144,7 @@ folder. Other configuration files can be found in the "Data\Scripts" folder.
 CREDITS
 
 • Siber who prodded me to continue working on this mod.
-• WyvernNZ for his SP Campaign Creation tutorial.
+• WyvernNZ for his helpful SP Campaign Creation tutorial.
 • Norsehound for the galaxy map background image.
 • sastrei for tips about HODs.
 • shadowwinterknig, Dom2, EatThePath, Dwarfinator and everyone else for tons of 
